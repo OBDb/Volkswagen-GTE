@@ -1,0 +1,202 @@
+{ "commands": [
+    {
+        "hdr": "7E0",
+        "rax": "7E8",
+        "cmd": {"22": "F42F"},
+        "freq": 10,
+        "signals": [{
+            "id": "MQB_FUEL_LEVEL",
+            "path": "Powertrain",
+            "fmt": {
+                "len": 16,
+                "max": 100,
+                "div": 2.55,
+                "unit": "percent"
+                },
+            "name": "Fuel Percent",
+            "description": "Percentage of fuel tank fill (calculation might be wrong)",
+            "suggestedMetric": "fuelTankLevel"
+            }]
+        },
+        {
+        "hdr": "7E0",
+        "rax": "7E8",
+        "cmd": {"22": "14B4"},
+        "freq": 10,
+        "signals": [{
+            "id": "MQB_FUEL_AMOUNT",
+            "path": "Powertrain",
+            "fmt": {
+                "len": 32,
+                "max": 1000,
+                "div": 100,
+                "unit": "liters"
+                },
+            "name": "Fuel Amount",
+            "description": "Fuel amount in the fuel tank"
+            }]
+        },
+        {
+            "hdr": "7E0",
+            "rax": "7E8",
+            "cmd": {"22": "F40D"},
+            "freq": 0.5,
+            "signals": [{
+                "id": "MQB_VEHICLE_SPEED_ECM",
+                "path": "Powertrain",
+                "fmt": {
+                    "len": 16,
+                    "max": 255,
+                    "unit": "kilometersPerHour"
+                    },
+                "name": "Vehicle Speed (TBD more precise PID)",
+                "suggestedMetric": "speed"
+                }]
+            },
+            {
+                "hdr": "7E0",
+                "rax": "7E8",
+                "cmd": {"22": "F40C"},
+                "freq": 0.5,
+                "signals": [{
+                    "id": "MQB_ENGINE_RPM_ECM",
+                    "path": "Powertrain",
+                    "fmt": {
+                        "len": 32,
+                        "max": 10000,
+                        "unit": "rpm"
+                        },
+                    "name": "Engine RPM"
+                    }]
+            },
+            {
+                "hdr": "7E0",
+                "rax": "7E8",
+                "cmd": {"22": "1618"},
+                "freq": 10,
+                "signals": [{
+                    "id": "MQB_PHEV_HVBAT_SOC_ABSOLUTE",
+                    "path": "Battery",
+                    "fmt": {
+                        "len": 32,
+                        "max": 100,
+                        "unit": "percent",
+                        "div": 100
+                        },
+                    "name": "HVBAT State of Charge",
+                    "suggestedMetric": "stateOfCharge"
+                    }]
+            },
+            {
+                "hdr": "744",
+                "rax": "7AE",
+                "cmd": {"22": "1618"},
+                "freq": 10,
+                "signals": [{
+                    "id": "MQB_PHEV_OBC_CHARGE_STATUS",
+                    "path": "Battery",
+                    "fmt": {
+                        "len": 16,
+                        "max": 1,
+                        "unit": "noyes"
+                        },
+                    "name": "OBC Charging Status",
+                    "suggestedMetric": "isCharging"
+                    }]
+            },
+            {
+                "hdr": "744",
+                "rax": "7AE",
+                "cmd": {"22": "1DE4"},
+                "freq": 20,
+                "signals": [{
+                    "id": "MQB_PHEV_OBC_REMAINING_TIME",
+                    "path": "Battery",
+                    "fmt": {
+                        "len": 32,
+                        "max": 600,
+                        "mul": 5,
+                        "unit": "minutes"
+                        },
+                    "name": "OBC Remaining Charge Time"
+                    }]
+            },
+            {
+                "hdr": "744",
+                "rax": "7AE",
+                "cmd": {"22": "1DDD"},
+                "freq": 10,
+                "signals": [{
+                    "id": "MQB_PHEV_OBC_CHARGE_IMMEDIATELY",
+                    "path": "Battery",
+                    "fmt": {
+                        "bix": 16,
+                        "len": 16,
+                        "max": 1,
+                        "unit": "noyes"
+                        },
+                    "name": "OBC Charge Immediately",
+                    "description": "Vehicle is set to start charging regardless of any schedule. This is controlled by the button inside charge port."
+                    }]
+            },
+            {
+                "hdr": "714",
+                "rax": "77E",
+                "cmd": {"22": "22B8"},
+                "freq": 10,
+                "signals": [{
+                    "id": "MQB_MILEAGE_HIGH_RES",
+                    "path": "Trips",
+                    "fmt": {
+                        "len": 64,
+                        "max": 9999999,
+                        "div": 1000,
+                        "unit": "kilometers"
+                        },
+                    "name": "Total Mileage",
+                    "suggestedMetric": "odometer"
+                    }]
+            },
+            {
+                "hdr": "710",
+                "rax": "77A",
+                "cmd": {"22": "2AB5"},
+                "freq": 10,
+                "signals": [{
+                    "id": "MQB_RANGE_TOTAL",
+                    "path": "Powertrain",
+                    "fmt": {
+                        "len": 32,
+                        "max": 9999,
+                        "unit": "kilometers"
+                        },
+                    "name": "Total Range"
+                    },
+                    {
+                    "id": "MQB_RANGE_COMBUSTION",
+                    "path": "Powertrain",
+                    "fmt": {
+                        "bix": 32,
+                        "len": 16,
+                        "max": 9999,
+                        "unit": "kilometers"
+                        },
+                    "name": "Combustion Fuel Range (unsure what happens if it's more than 255km)",
+                    "suggestedMetric": "fuelRange"
+                    },
+                    {
+                    "id": "MQB_PHEV_RANGE_ELECTRIC",
+                    "path": "Powertrain",
+                    "fmt": {
+                        "bix": 64,
+                        "len": 16,
+                        "max": 255,
+                        "unit": "kilometers"
+                        },
+                    "name": "Electric Range",
+                    "suggestedMetric": "electricRange"
+                    }
+                ]
+            },
+]
+}
