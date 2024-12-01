@@ -122,6 +122,24 @@
                     }]
             },
             {
+                "hdr": "714",
+                "rax": "77E",
+                "cmd": {"22": "220C"},
+                "freq": 20,
+                "signals": [{
+                    "id": "MQB_EXTERIOR_TEMPERATURE",
+                    "path": "Environment",
+                    "fmt": {
+                        "len": 16,
+                        "max": 100,
+                        "add": -100,
+                        "div": 2,
+                        "unit": "celsius"
+                        },
+                    "name": "Exterior Temperature"
+                    }]
+            },
+            {
                 "hdr": "744",
                 "rax": "7AE",
                 "cmd": {"22": "1DDD"},
@@ -197,6 +215,6 @@
                     "suggestedMetric": "electricRange"
                     }
                 ]
-            },
+            }
 ]
 }
