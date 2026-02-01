@@ -1,3 +1,7 @@
+references:
+  - "https://en.wikipedia.org/wiki/Volkswagen_Golf_VII"
+  - "https://en.wikipedia.org/wiki/Volkswagen_Golf_VIII"
+
 generations:
   - name: "First Generation (Golf VII GTE)"
     start_year: 2014
